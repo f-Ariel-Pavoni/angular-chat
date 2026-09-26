@@ -1,12 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { LucideAngularModule, MessageCircle } from 'lucide-angular';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, LucideAngularModule],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
 })
 export class App {
   protected readonly title = signal('angular-chat');
+  protected readonly MessageCircle = MessageCircle;
 }
