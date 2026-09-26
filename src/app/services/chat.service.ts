@@ -6,4 +6,16 @@ import { Chat } from '../models/chat';
 })
 export class ChatService {
   private chats: Chat[] = [];
+
+  getChats(): Chat[] {
+    return this.chats;
+  }
+
+  getChatById(id: number): Chat | undefined {
+    return this.chats.find((chat) => chat.id === id);
+  }
+
+  addChat(chat: Chat): void {
+    this.chats.push(chat);
+  }
 }
