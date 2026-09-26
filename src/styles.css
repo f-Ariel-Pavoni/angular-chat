@@ -1,1 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
+/* ================================
+   Variables
+================================ */
+
+:root {
+  /* Colores principales */
+  --color-primary: #4e6391;
+  --color-primary-dark: #363c50;
+  --color-primary-light: #dbeafe;
+
+  /* Fondos */
+  --color-background: #e2e8f0;
+  --color-surface: #ffffff;
+  --color-surface-hover: #c2daf3;
+
+  /* Texto */
+  --color-text: #1e293b;
+  --color-text-secondary: #64748b;
+  --color-text-light: #94a3b8;
+
+  /* Bordes */
+  --color-border: #94a3b8;
+
+  /* Estados */
+  --color-online: #22c55e;
+  --color-offline: #94a3b8;
+
+  /* Mensajes */
+  --color-message-user: #2563eb;
+  --color-message-app: #e2e8f0;
+  --color-message-user-text: #ffffff;
+  --color-message-app-text: #1e293b;
+
+  /* Dimensiones */
+  --sidebar-width: 320px;
+  --header-height: 64px;
+
+  /* Bordes */
+  --radius-small: 6px;
+  --radius-medium: 10px;
+  --radius-large: 16px;
+
+  /* Sombras */
+  --shadow-small: 0 1px 3px rgba(15, 23, 42, 0.08);
+  --shadow-medium: 0 4px 12px rgba(15, 23, 42, 0.08);
+
+  /* Tipografía */
+  --font-family: 'Inter', sans-serif;
+
+  /* Transiciones */
+  --transition-fast: 0.15s ease;
+}
