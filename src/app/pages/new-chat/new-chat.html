@@ -1,0 +1,28 @@
+<div class="new-chat">
+  <h1>Nuevo chat</h1>
+
+  <form [formGroup]="chatForm" (ngSubmit)="onSubmit()">
+    <label for="name">Nombre</label>
+    <input id="name" type="text" formControlName="name" />
+    @if (chatForm.controls.name.invalid && chatForm.controls.name.touched) {
+      <small>El nombre es obligatorio.</small>
+    }
+
+    <label>Avatar</label>
+
+    <div class="avatar-options">
+      @for (avatar of avatars; track avatar) {
+        <button
+          type="button"
+          class="avatar-option"
+          [class.selected]="chatForm.controls.avatar.value === avatar"
+          (click)="chatForm.controls.avatar.setValue(avatar)"
+        >
+          {{ avatar }}
+        </button>
+      }
+    </div>
+
+    <button type="submit">Crear chat</button>
+  </form>
+</div>

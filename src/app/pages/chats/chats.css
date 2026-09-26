@@ -15,12 +15,22 @@
   background: var(--color-background);
 }
 
-.chat-sidebar__header button {
+.chat-sidebar__header a {
+  display: block;
+  box-sizing: border-box;
+  width: calc(100% - 40px);
+  margin: 12px 20px;
   padding: 8px 12px;
-  border: none;
   border-radius: var(--radius-small);
   background: var(--color-primary);
   color: white;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color var(--transition-fast);
+}
+
+.chat-sidebar__header a:hover {
+  background: var(--color-primary-dark);
 }
 
 .chat-window__header {

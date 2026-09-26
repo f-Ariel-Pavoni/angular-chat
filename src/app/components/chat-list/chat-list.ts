@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Chat } from '../../models/chat';
 
 @Component({
   selector: 'app-chat-list',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './chat-list.html',
   styleUrl: './chat-list.css',
 })

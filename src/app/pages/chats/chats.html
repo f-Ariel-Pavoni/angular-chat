@@ -2,21 +2,13 @@
   <aside class="chat-sidebar">
     <header class="chat-sidebar__header">
       <h1>Chats</h1>
-      <button type="button">Nuevo</button>
+      <a routerLink="/nuevo">Nuevo</a>
     </header>
 
-    <div class="chat-list">
-      <!-- Acá aparecerán los chats -->
-    </div>
+    <app-chat-list [chats]="chats" />
   </aside>
 
   <main class="chat-window">
-    <header class="chat-window__header">
-      <h2>Seleccioná un chat</h2>
-    </header>
-
-    <div class="chat-window__empty">
-      <p>Elegí una conversación para comenzar.</p>
-    </div>
+    <app-chat-window [chat]="selectedChat" />
   </main>
 </div>

@@ -1,1 +1,15 @@
-<p>chat-list works!</p>
+@for (chat of chats; track chat.id) {
+  <a class="chat-item" [routerLink]="['/chats', chat.id]">
+    <span class="chat-item__avatar">
+      {{ chat.avatar }}
+    </span>
+
+    <span class="chat-item__info">
+      <span class="chat-item__name">{{ chat.name }}</span>
+
+      <span class="chat-item__status">
+        {{ chat.status === 'online' ? 'En línea' : 'Desconectado' }}
+      </span>
+    </span>
+  </a>
+}
