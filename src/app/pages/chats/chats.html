@@ -5,7 +5,13 @@
       <a routerLink="/nuevo">Nuevo</a>
     </header>
 
-    <app-chat-list [chats]="chats" />
+    <div class="chat-search">
+      <input type="text" placeholder="Buscar chat..." [formControl]="searchControl" />
+    </div>
+
+    <div class="chat-sidebar__list">
+      <app-chat-list [chats]="filteredChats" />
+    </div>
   </aside>
 
   <main class="chat-window">

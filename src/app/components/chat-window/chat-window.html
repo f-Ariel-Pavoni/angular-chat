@@ -3,14 +3,25 @@
     <h2>{{ chat.name }}</h2>
   </header>
 
-  <div class="chat-window__messages">
+  <div class="chat-window__messages" #messagesContainer>
     @for (message of chat.messages; track message.id) {
-      <p>{{ message.content }}</p>
+      <p
+        class="message"
+        [class.message--user]="message.author === 'user'"
+        [class.message--app]="message.author === 'app'"
+      >
+        {{ message.content }}
+      </p>
     }
   </div>
 
   <div class="chat-window__form">
-    <input type="text" placeholder="Escribí un mensaje..." [formControl]="messageControl" />
+    <input
+      type="text"
+      placeholder="Escribí un mensaje..."
+      [formControl]="messageControl"
+      (keydown.enter)="onSubmit(); $event.preventDefault()"
+    />
 
     <button type="button" (click)="onSubmit()">Enviar</button>
   </div>

@@ -7,6 +7,8 @@
 .chat-sidebar {
   display: flex;
   flex-direction: column;
+  min-height: 0;
+  height: 100%;
   background: var(--color-surface);
   border-right: 1px solid var(--color-border);
 }
@@ -33,6 +35,12 @@
   background: var(--color-primary-dark);
 }
 
+.chat-sidebar__list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
 .chat-window__header {
   height: var(--header-height);
   display: flex;
@@ -48,4 +56,24 @@
   justify-content: center;
   height: calc(100vh - var(--header-height));
   color: var(--color-text-secondary);
+}
+
+.chat-search {
+  padding: 12px 20px;
+}
+
+.chat-search input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-family);
+}
+
+.chat-search input:focus {
+  outline: none;
+  border-color: var(--color-primary);
 }
