@@ -1,17 +1,25 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
+import { LucideAngularModule, Trash2 } from 'lucide-angular';
+
 import { Chat } from '../../models/chat';
 import { Message } from '../../models/message';
+import { ConfirmModal } from '../confirm-modal/confirm-modal';
 
 @Component({
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, LucideAngularModule, ConfirmModal],
   selector: 'app-chat-window',
   templateUrl: './chat-window.html',
   styleUrl: './chat-window.css',
 })
 export class ChatWindow {
   @Input() chat: Chat | undefined;
+
   @ViewChild('messagesContainer') messagesContainer!: ElementRef;
+
+  protected readonly Trash2 = Trash2;
+
+  showConfirmModal = false;
 
   messageControl = new FormControl('', {
     nonNullable: true,
@@ -31,11 +39,29 @@ export class ChatWindow {
     };
 
     this.chat?.messages.push(newMessage);
+
     this.messageControl.reset();
 
     setTimeout(() => {
       const element = this.messagesContainer.nativeElement;
       element.scrollTop = element.scrollHeight;
     });
+  }
+
+  openConfirmModal(): void {
+    this.showConfirmModal = true;
+  }
+
+  clearMessages(): void {
+    if (!this.chat) {
+      return;
+    }
+
+    this.chat.messages = [];
+    this.showConfirmModal = false;
+  }
+
+  cancelClearMessages(): void {
+    this.showConfirmModal = false;
   }
 }

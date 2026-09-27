@@ -83,3 +83,24 @@
   background: var(--color-message-app);
   color: var(--color-message-app-text);
 }
+
+.chat-window__delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  padding: 8px;
+  border: none;
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.chat-window__delete:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-offline);
+}
