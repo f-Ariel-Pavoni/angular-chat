@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { Chat } from '../../models/chat';
 import { Message } from '../../models/message';
@@ -11,6 +11,7 @@ import { Message } from '../../models/message';
 })
 export class ChatWindow {
   @Input() chat: Chat | undefined;
+  @ViewChild('messagesContainer') messagesContainer!: ElementRef;
 
   messageControl = new FormControl('', {
     nonNullable: true,
@@ -31,5 +32,10 @@ export class ChatWindow {
 
     this.chat?.messages.push(newMessage);
     this.messageControl.reset();
+
+    setTimeout(() => {
+      const element = this.messagesContainer.nativeElement;
+      element.scrollTop = element.scrollHeight;
+    });
   }
 }

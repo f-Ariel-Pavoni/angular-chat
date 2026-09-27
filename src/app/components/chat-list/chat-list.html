@@ -5,9 +5,17 @@
     </span>
 
     <span class="chat-item__info">
-      <span class="chat-item__name">{{ chat.name }}</span>
+      <span class="chat-item__name">
+        {{ chat.name }}
+      </span>
 
       <span class="chat-item__status">
+        <span
+          class="chat-item__status-indicator"
+          [class.online]="chat.status === 'online'"
+          [class.offline]="chat.status === 'offline'"
+        ></span>
+
         {{ chat.status === 'online' ? 'En línea' : 'Desconectado' }}
       </span>
     </span>

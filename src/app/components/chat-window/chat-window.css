@@ -62,3 +62,24 @@
   height: calc(100vh - var(--header-height));
   color: var(--color-text-secondary);
 }
+
+.message {
+  width: fit-content;
+  max-width: 70%;
+  margin: 8px 0;
+  padding: 10px 14px;
+  border-radius: var(--radius-large);
+  line-height: 1.4;
+}
+
+.message--user {
+  margin-left: auto;
+  background: var(--color-message-user);
+  color: var(--color-message-user-text);
+}
+
+.message--app {
+  margin-right: auto;
+  background: var(--color-message-app);
+  color: var(--color-message-app-text);
+}
