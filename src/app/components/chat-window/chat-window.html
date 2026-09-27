@@ -1,1 +1,21 @@
-<h2>{{ chat?.name }}</h2>
+@if (chat) {
+  <header class="chat-window__header">
+    <h2>{{ chat.name }}</h2>
+  </header>
+
+  <div class="chat-window__messages">
+    @for (message of chat.messages; track message.id) {
+      <p>{{ message.content }}</p>
+    }
+  </div>
+
+  <div class="chat-window__form">
+    <input type="text" placeholder="Escribí un mensaje..." [formControl]="messageControl" />
+
+    <button type="button" (click)="onSubmit()">Enviar</button>
+  </div>
+} @else {
+  <div class="chat-window__empty">
+    <p>Seleccioná un chat para comenzar.</p>
+  </div>
+}
