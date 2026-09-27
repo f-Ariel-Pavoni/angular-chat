@@ -1,6 +1,10 @@
 @if (chat) {
   <header class="chat-window__header">
     <h2>{{ chat.name }}</h2>
+
+    <button type="button" class="chat-window__delete" (click)="openConfirmModal()">
+      <lucide-icon [img]="Trash2" />
+    </button>
   </header>
 
   <div class="chat-window__messages" #messagesContainer>
@@ -25,6 +29,14 @@
 
     <button type="button" (click)="onSubmit()">Enviar</button>
   </div>
+
+  @if (showConfirmModal) {
+    <app-confirm-modal
+      message="¿Querés borrar todos los mensajes de este chat?"
+      (confirmed)="clearMessages()"
+      (cancelled)="cancelClearMessages()"
+    />
+  }
 } @else {
   <div class="chat-window__empty">
     <p>Seleccioná un chat para comenzar.</p>
