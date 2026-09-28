@@ -1,23 +1,37 @@
 @for (chat of chats; track chat.id) {
-  <a class="chat-item" [routerLink]="['/chats', chat.id]">
-    <span class="chat-item__avatar">
-      {{ chat.avatar }}
-    </span>
-
-    <span class="chat-item__info">
-      <span class="chat-item__name">
-        {{ chat.name }}
+  <div class="chat-item">
+    <a [routerLink]="['/chats', chat.id]">
+      <span class="chat-item__avatar">
+        {{ chat.avatar }}
       </span>
 
-      <span class="chat-item__status">
-        <span
-          class="chat-item__status-indicator"
-          [class.online]="chat.status === 'online'"
-          [class.offline]="chat.status === 'offline'"
-        ></span>
+      <span class="chat-item__info">
+        <span class="chat-item__name">
+          {{ chat.name }}
+        </span>
 
-        {{ chat.status === 'online' ? 'En línea' : 'Desconectado' }}
+        <span class="chat-item__status">
+          <span
+            class="chat-item__status-indicator"
+            [class.online]="chat.status === 'online'"
+            [class.offline]="chat.status === 'offline'"
+          ></span>
+
+          {{ chat.status === 'online' ? 'En línea' : 'Desconectado' }}
+        </span>
       </span>
-    </span>
-  </a>
+    </a>
+
+    <button type="button" class="chat-item__delete" (click)="openDeleteModal(chat.id)">
+      <lucide-icon [img]="Trash2" />
+    </button>
+  </div>
+}
+
+@if (showConfirmModal) {
+  <app-confirm-modal
+    message="¿Querés eliminar este chat?"
+    (confirmed)="deleteChat()"
+    (cancelled)="cancelDelete()"
+  />
 }

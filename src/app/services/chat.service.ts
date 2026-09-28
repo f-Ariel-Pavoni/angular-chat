@@ -18,4 +18,12 @@ export class ChatService {
   addChat(chat: Chat): void {
     this.chats.push(chat);
   }
+
+  deleteChat(id: number): void {
+    const index = this.chats.findIndex((chat) => chat.id === id);
+
+    if (index !== -1) {
+      this.chats.splice(index, 1);
+    }
+  }
 }
