@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { LucideAngularModule, Trash2 } from 'lucide-angular';
 
@@ -19,6 +19,8 @@ export class ChatWindow {
 
   protected readonly Trash2 = Trash2;
 
+  constructor(private cdr: ChangeDetectorRef) {}
+
   showConfirmModal = false;
 
   messageControl = new FormControl('', {
@@ -27,7 +29,7 @@ export class ChatWindow {
   });
 
   onSubmit(): void {
-    if (this.messageControl.invalid) {
+    if (this.messageControl.invalid || !this.chat) {
       return;
     }
 
@@ -38,14 +40,27 @@ export class ChatWindow {
       date: new Date(),
     };
 
-    this.chat?.messages.push(newMessage);
+    this.chat.messages.push(newMessage);
 
     this.messageControl.reset();
 
     setTimeout(() => {
-      const element = this.messagesContainer.nativeElement;
-      element.scrollTop = element.scrollHeight;
-    });
+      const response: Message = {
+        id: Date.now() + 1,
+        content: 'Gracias por tu mensaje. En breve te respondo.',
+        author: 'app',
+        date: new Date(),
+      };
+
+      this.chat!.messages.push(response);
+
+      this.cdr.detectChanges();
+
+      setTimeout(() => {
+        const element = this.messagesContainer.nativeElement;
+        element.scrollTop = element.scrollHeight;
+      });
+    }, 2000);
   }
 
   openConfirmModal(): void {

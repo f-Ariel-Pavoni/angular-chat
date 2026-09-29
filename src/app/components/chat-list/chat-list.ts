@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { LucideAngularModule, Trash2 } from 'lucide-angular';
 
 import { Chat } from '../../models/chat';
@@ -20,7 +20,10 @@ export class ChatList {
   showConfirmModal = false;
   chatToDelete: number | null = null;
 
-  constructor(private chatService: ChatService) {}
+  constructor(
+    private chatService: ChatService,
+    private router: Router,
+  ) {}
 
   openDeleteModal(id: number): void {
     this.chatToDelete = id;
@@ -36,6 +39,8 @@ export class ChatList {
 
     this.chatToDelete = null;
     this.showConfirmModal = false;
+
+    this.router.navigate(['/chats']);
   }
 
   cancelDelete(): void {
