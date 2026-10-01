@@ -13,11 +13,11 @@
         <span class="chat-item__status">
           <span
             class="chat-item__status-indicator"
-            [class.online]="chat.status === 'online'"
-            [class.offline]="chat.status === 'offline'"
+            [class.online]="isOnline(chat)"
+            [class.offline]="!isOnline(chat)"
           ></span>
 
-          {{ chat.status === 'online' ? 'En línea' : 'Desconectado' }}
+          {{ isOnline(chat) ? 'En línea' : getLastSeen(chat) }}
         </span>
       </span>
     </a>
