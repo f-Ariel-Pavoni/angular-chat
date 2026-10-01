@@ -40,6 +40,8 @@ export class ChatWindow {
       date: new Date(),
     };
 
+    this.chat!.lastConnection = new Date();
+
     this.chat.messages.push(newMessage);
 
     this.messageControl.reset();

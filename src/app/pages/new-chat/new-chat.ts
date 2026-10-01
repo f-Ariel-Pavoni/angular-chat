@@ -37,6 +37,7 @@ export class NewChat {
       name: this.chatForm.value.name ?? '',
       avatar: this.chatForm.value.avatar ?? '',
       status: 'offline',
+      lastConnection: new Date(),
       messages: [],
     };
 
