@@ -1,5 +1,13 @@
 @if (chat) {
   <header class="chat-window__header">
+    <button
+      type="button"
+      class="chat-window__back"
+      (click)="goBack()"
+      aria-label="Volver a los chats"
+    >
+      <lucide-icon [img]="ArrowLeft" />
+    </button>
     <h2>{{ chat.name }}</h2>
 
     <button type="button" class="chat-window__delete" (click)="openConfirmModal()">

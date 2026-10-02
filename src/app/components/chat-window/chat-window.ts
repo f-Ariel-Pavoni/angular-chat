@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
-import { LucideAngularModule, Trash2 } from 'lucide-angular';
+import { Router } from '@angular/router';
+import { LucideAngularModule, Trash2, ArrowLeft } from 'lucide-angular';
 
 import { Chat } from '../../models/chat';
 import { ChatService } from '../../services/chat.service';
@@ -19,10 +20,12 @@ export class ChatWindow {
   @ViewChild('messagesContainer') messagesContainer!: ElementRef;
 
   protected readonly Trash2 = Trash2;
+  protected readonly ArrowLeft = ArrowLeft;
 
   constructor(
     private cdr: ChangeDetectorRef,
     private chatService: ChatService,
+    private router: Router,
   ) {}
 
   showConfirmModal = false;
@@ -95,5 +98,9 @@ export class ChatWindow {
 
   cancelClearMessages(): void {
     this.showConfirmModal = false;
+  }
+
+  goBack(): void {
+    this.router.navigate(['/chats']);
   }
 }

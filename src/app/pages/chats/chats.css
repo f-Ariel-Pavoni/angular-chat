@@ -100,3 +100,22 @@
   outline: none;
   border-color: var(--color-primary);
 }
+
+@media (max-width: 768px) {
+  .chat-layout {
+    display: block;
+  }
+
+  .chat-sidebar--hidden-mobile {
+    display: none;
+  }
+
+  .chat-window {
+    display: none;
+  }
+
+  .chat-window--mobile {
+    display: block;
+    height: 100vh;
+  }
+}
