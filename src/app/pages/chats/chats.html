@@ -1,5 +1,5 @@
 <div class="chat-layout">
-  <aside class="chat-sidebar">
+  <aside class="chat-sidebar" [class.chat-sidebar--hidden-mobile]="isChatOpen">
     <header class="chat-sidebar__header">
       <h1>Chats</h1>
       <a routerLink="/nuevo">Nuevo</a>
@@ -14,7 +14,7 @@
     </div>
   </aside>
 
-  <main class="chat-window">
+  <main class="chat-window" [class.chat-window--mobile]="isChatOpen">
     <app-chat-window [chat]="selectedChat" />
   </main>
 </div>

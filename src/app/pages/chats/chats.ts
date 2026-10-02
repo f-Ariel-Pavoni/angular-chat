@@ -15,6 +15,7 @@ import { ChatWindow } from '../../components/chat-window/chat-window';
 export class Chats {
   chats: Chat[];
   selectedChat: Chat | undefined;
+  isChatOpen = false;
 
   searchControl = new FormControl('', {
     nonNullable: true,
@@ -29,6 +30,8 @@ export class Chats {
     this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('id'));
       this.selectedChat = this.chatService.getChatById(id);
+
+      this.isChatOpen = params.has('id');
     });
   }
 
