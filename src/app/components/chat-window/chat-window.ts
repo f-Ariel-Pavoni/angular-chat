@@ -3,6 +3,7 @@ import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { LucideAngularModule, Trash2 } from 'lucide-angular';
 
 import { Chat } from '../../models/chat';
+import { ChatService } from '../../services/chat.service';
 import { Message } from '../../models/message';
 import { ConfirmModal } from '../confirm-modal/confirm-modal';
 
@@ -19,7 +20,10 @@ export class ChatWindow {
 
   protected readonly Trash2 = Trash2;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private chatService: ChatService,
+  ) {}
 
   showConfirmModal = false;
 
@@ -27,6 +31,14 @@ export class ChatWindow {
     nonNullable: true,
     validators: Validators.required,
   });
+
+  private scrollToBottom(): void {
+    setTimeout(() => {
+      const element = this.messagesContainer.nativeElement;
+
+      element.scrollTop = element.scrollHeight;
+    });
+  }
 
   onSubmit(): void {
     if (this.messageControl.invalid || !this.chat) {
@@ -42,7 +54,10 @@ export class ChatWindow {
 
     this.chat!.lastConnection = new Date();
 
-    this.chat.messages.push(newMessage);
+    this.chatService.addMessage(this.chat.id, newMessage);
+
+    this.cdr.detectChanges();
+    this.scrollToBottom();
 
     this.messageControl.reset();
 
@@ -54,7 +69,7 @@ export class ChatWindow {
         date: new Date(),
       };
 
-      this.chat!.messages.push(response);
+      this.chatService.addMessage(this.chat!.id, response);
 
       this.cdr.detectChanges();
 
@@ -74,7 +89,7 @@ export class ChatWindow {
       return;
     }
 
-    this.chat.messages = [];
+    this.chatService.clearMessages(this.chat.id);
     this.showConfirmModal = false;
   }
 

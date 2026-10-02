@@ -3,50 +3,38 @@
 ================================ */
 
 :root {
-  /* Colores principales */
-  --color-primary: #4e6391;
-  --color-primary-dark: #363c50;
-  --color-primary-light: #dbeafe;
+  --color-primary: #0f766e;
+  --color-primary-dark: #115e59;
+  --color-primary-light: #ccfbf1;
 
-  /* Fondos */
-  --color-background: #e2e8f0;
-  --color-surface: #ffffff;
-  --color-surface-hover: #c2daf3;
+  --color-background: #f1f5f2;
+  --color-surface: #fbfcfa;
+  --color-surface-hover: #e6eeeb;
 
-  /* Texto */
-  --color-text: #1e293b;
+  --color-text: #1f2933;
   --color-text-secondary: #64748b;
   --color-text-light: #94a3b8;
 
-  /* Bordes */
-  --color-border: #94a3b8;
+  --color-border: #d5ded9;
 
-  /* Estados */
-  --color-online: #22c55e;
-  --color-offline: #94a3b8;
+  --color-online: #16a34a;
+  --color-offline: #dc4c4c;
 
-  /* Mensajes */
-  --color-message-user: #2563eb;
-  --color-message-app: #e2e8f0;
+  --color-message-user: #0f766e;
+  --color-message-app: #e8eeeb;
   --color-message-user-text: #ffffff;
-  --color-message-app-text: #1e293b;
+  --color-message-app-text: #1f2933;
 
-  /* Dimensiones */
   --sidebar-width: 320px;
   --header-height: 64px;
 
-  /* Bordes */
-  --radius-small: 6px;
-  --radius-medium: 10px;
-  --radius-large: 16px;
+  --radius-small: 8px;
+  --radius-medium: 12px;
+  --radius-large: 18px;
 
-  /* Sombras */
-  --shadow-small: 0 1px 3px rgba(15, 23, 42, 0.08);
-  --shadow-medium: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-small: 0 1px 3px rgba(31, 41, 51, 0.08);
+  --shadow-medium: 0 6px 18px rgba(31, 41, 51, 0.08);
 
-  /* Tipografía */
   --font-family: 'Inter', sans-serif;
-
-  /* Transiciones */
   --transition-fast: 0.15s ease;
 }
